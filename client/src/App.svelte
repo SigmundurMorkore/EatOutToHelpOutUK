@@ -1,23 +1,29 @@
 <script>
   let restaurants = undefined;
   function getRestaurants(event) {
+    // Get the postcode from the input
     let postcode = event.target.postcode.value;
-    console.log(postcode);
+    // Fetch the restaurant data
     fetch("./getRestaurants/" + postcode)
       .then(response => response.json())
+      // Set restaurants equal to the response.restaurants data
       .then(response => (restaurants = response.restaurants));
   }
 
   function getCSV() {
-    console.log(restaurants.length);
+    // Define the CSV rows
     const rows = restaurants;
+
+    // Define the start of the CSV content
     let csvContent = `data:text/csv;charset=utf-8;\n,"Name","Address"\n`;
 
+    // Add the row data to the CSV content
     csvContent += rows.map(row => `"${row.join(`","`)}"`).join("\n");
 
-    console.log(csvContent);
-
+    // Encode the CSV condent into a URI
     let encodedURI = encodeURI(csvContent);
+
+    // Open up the URI (display a download prompt)
     window.open(encodedURI);
   }
 </script>

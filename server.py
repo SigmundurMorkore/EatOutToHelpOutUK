@@ -15,12 +15,10 @@ def base():
 def home(path):
     return send_from_directory('client/public', path)
 
-
-@app.route("/rand")
-def hello():
-    return str(random.randint(0, 100))
-
-
+# API Endpoint for retreiving restaurants participating in the Eat Out To Help Out Scheme
+# Requires a postcode
+# Returns a list of restaurants in the format of:
+# { restaurants: [["name", "address"], ["name", "address"]]}
 @app.route("/getRestaurants/<postcode>", methods=["GET"])
 def restaurants(postcode):
     postcode = str(postcode)
