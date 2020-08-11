@@ -53,6 +53,9 @@ To run the project in development, open up two terminals:
   - `npm install`
   - `npm run autobuild`
 
+You can now open up localhost with the port specified by the python script.
+Normally it's `localhost:5000`
+
 ## Problems faced to to be solved for future work
 
 In the past day (started on 3 Aug), we have only managed to import these
